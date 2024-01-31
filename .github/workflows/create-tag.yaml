@@ -1,0 +1,14 @@
+name: create-release
+on:
+  push:
+    branches:
+    - release
+
+jobs:
+  create-tags:
+    uses: cdubos-fr/reusable-workflows/.github/workflows/python-tag.yml@v0.1
+    with:
+      python-version: "3.10"
+      python-module: "galaxy_census_library"
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,36 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "galaxy-census-library"
+authors = [{name = "Clément Dubos", email = "contact@cdubos.fr"}]
+dynamic = ["version", "description"]
+readme = "README.md"
+requires-python = ">= 3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "bandit",
+    "flake8",
+    "ipython",
+    "mypy",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "pytest-lazy-fixture",
+    "pyupgrade",
+    "reorder-python-imports",
+    "tox",
+    "xenon",
+    "ruff",
+    "galaxy-census-library[docs]",
+]
+docs = [
+    "mkdocs",
+    "mkdocs-material"
+]
+
+[tool.flit.module]
+name = "galaxy_census_library"

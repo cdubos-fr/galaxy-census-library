@@ -1,0 +1,33 @@
+{
+    "build": {
+        "dockerfile": "../docker/Dockerfile"
+    },
+    "runArgs": ["--name=galaxy-census-library-development", "--hostname=/galaxy-census-library-devenv"],
+    "workspaceFolder": "/home/developer/galaxy-census-library",
+    "customizations": {
+        "vscode": {
+            "settings":  {
+                "terminal.integrated.profiles.linux": {
+                    "zsh": {
+                        "path": "/bin/zsh"
+                    }
+                },
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "terminal.integrated.cwd": "/home/developer/galaxy-census-library",
+                "python.defaultInterpreterPath": "/home/developer/galaxy-census-library/.venv/bin/python"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance"
+            ]
+        }
+    },
+    "remoteUser": "developer",
+    "containerUser": "developer",
+    "updateRemoteUserUID": true,
+    "mounts": [
+        "type=bind,source=.,target=/home/developer/galaxy-census-library"
+    ],
+    "postCreateCommand": "bash ./docker/provision.sh developer galaxy-census-library",
+    "remoteEnv": {"USER": "developer"}
+}
